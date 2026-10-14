@@ -1,0 +1,183 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "National Heritage places by state and territory. Choropleth of listing counts with a stacked bar of heritage types. Click a state to highlight it in both views.",
+  "background": null,
+  "spacing": 16,
+  "hconcat": [
+    {
+      "width": 460,
+      "height": 500,
+      "projection": {
+        "type": "conicEqualArea",
+        "parallels": [-18, -36],
+        "rotate": [-132, 0]
+      },
+      "data": {
+        "url": "data/nhl_places.csv"
+      },
+      "transform": [
+        {"filter": "datum.state != 'EXT'"},
+        {
+          "calculate": "datum.class === 'Historic' ? 1 : 0",
+          "as": "is_historic"
+        },
+        {
+          "calculate": "datum.class === 'Natural' ? 1 : 0",
+          "as": "is_natural"
+        },
+        {
+          "calculate": "datum.class === 'Indigenous' ? 1 : 0",
+          "as": "is_indigenous"
+        },
+        {
+          "aggregate": [
+            {"op": "count", "as": "places"},
+            {"op": "sum", "field": "is_historic", "as": "historic"},
+            {"op": "sum", "field": "is_natural", "as": "natural"},
+            {"op": "sum", "field": "is_indigenous", "as": "indigenous"}
+          ],
+          "groupby": ["state"]
+        },
+        {
+          "calculate": "datum.state === 'NSW' ? 'New South Wales' : datum.state === 'VIC' ? 'Victoria' : datum.state === 'QLD' ? 'Queensland' : datum.state === 'WA' ? 'Western Australia' : datum.state === 'SA' ? 'South Australia' : datum.state === 'TAS' ? 'Tasmania' : datum.state === 'NT' ? 'Northern Territory' : 'Australian Capital Territory'",
+          "as": "state_name"
+        },
+        {
+          "lookup": "state",
+          "from": {
+            "data": {
+              "url": "data/aus_states.topojson",
+              "format": {"type": "topojson", "feature": "states"}
+            },
+            "key": "properties.STATE"
+          },
+          "as": "geo"
+        }
+      ],
+      "params": [
+        {
+          "name": "state_sel",
+          "select": {"type": "point", "fields": ["state"]}
+        }
+      ],
+      "mark": {
+        "type": "geoshape",
+        "stroke": "#ffffff",
+        "cursor": "pointer"
+      },
+      "encoding": {
+        "shape": {"field": "geo", "type": "geojson"},
+        "color": {
+          "field": "places",
+          "type": "quantitative",
+          "title": "Places listed",
+          "scale": {
+            "range": ["#f3e6d8", "#8a4b12"]
+          },
+          "legend": {
+            "orient": "top-left",
+            "direction": "horizontal",
+            "gradientLength": 120,
+            "titleFontSize": 12,
+            "labelFontSize": 11
+          }
+        },
+        "strokeWidth": {
+          "condition": {"param": "state_sel", "empty": false, "value": 2.2},
+          "value": 1
+        },
+        "opacity": {
+          "condition": {"param": "state_sel", "value": 1},
+          "value": 0.25
+        },
+        "tooltip": [
+          {"field": "state_name", "title": "State / territory"},
+          {"field": "places", "title": "Places listed"},
+          {"field": "historic", "title": "Historic", "format": ".0f"},
+          {"field": "natural", "title": "Natural", "format": ".0f"},
+          {"field": "indigenous", "title": "Indigenous", "format": ".0f"}
+        ]
+      }
+    },
+    {
+      "width": 280,
+      "height": 500,
+      "data": {
+        "url": "data/nhl_places.csv"
+      },
+      "transform": [
+        {
+          "calculate": "datum.state === 'NSW' ? 'New South Wales' : datum.state === 'VIC' ? 'Victoria' : datum.state === 'QLD' ? 'Queensland' : datum.state === 'WA' ? 'Western Australia' : datum.state === 'SA' ? 'South Australia' : datum.state === 'TAS' ? 'Tasmania' : datum.state === 'NT' ? 'Northern Territory' : datum.state === 'ACT' ? 'Australian Capital Territory' : 'External territories'",
+          "as": "state_name"
+        }
+      ],
+      "params": [
+        {
+          "name": "state_sel",
+          "select": {"type": "point", "fields": ["state"]}
+        }
+      ],
+      "mark": {
+        "type": "bar",
+        "cornerRadiusEnd": 2,
+        "cursor": "pointer"
+      },
+      "encoding": {
+        "y": {
+          "field": "state_name",
+          "type": "nominal",
+          "title": null,
+          "sort": "-x",
+          "axis": {
+            "ticks": false,
+            "domain": false,
+            "labelFontSize": 12,
+            "labelLimit": 160
+          }
+        },
+        "x": {
+          "aggregate": "count",
+          "type": "quantitative",
+          "title": "Places listed",
+          "axis": {"tickMinStep": 5, "grid": true}
+        },
+        "color": {
+          "field": "class",
+          "type": "nominal",
+          "title": "Heritage type",
+          "scale": {
+            "domain": ["Historic", "Natural", "Indigenous"],
+            "range": ["#8a6d3b", "#4f7a5a", "#b5451b"]
+          },
+          "legend": {
+            "orient": "top",
+            "direction": "horizontal",
+            "title": null,
+            "symbolStrokeWidth": 0
+          }
+        },
+        "order": {"field": "class", "sort": "descending"},
+        "opacity": {
+          "condition": {"param": "state_sel", "value": 1},
+          "value": 0.18
+        },
+        "tooltip": [
+          {"field": "state_name", "title": "State / territory"},
+          {"field": "class", "title": "Type"},
+          {"aggregate": "count", "title": "Places"}
+        ]
+      }
+    }
+  ],
+  "resolve": {"scale": {"color": "independent"}},
+  "config": {
+    "view": {"stroke": null},
+    "font": "Source Sans 3",
+    "axis": {
+      "labelFontSize": 12,
+      "titleFontSize": 12,
+      "titleColor": "#6b625a"
+    },
+    "legend": {"labelFontSize": 12}
+  }
+}

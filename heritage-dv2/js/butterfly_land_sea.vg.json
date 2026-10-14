@@ -1,0 +1,287 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Butterfly chart: historic places (land) vs underwater cultural heritage sites added to registers by jurisdiction, 2016-17 to 2019-20.",
+  "background": null,
+  "data": {
+    "url": "data/register_additions_land_sea.csv",
+    "format": {
+      "parse": {
+        "added": "number"
+      }
+    }
+  },
+  "transform": [
+    {
+      "aggregate": [
+        {
+          "op": "sum",
+          "field": "added",
+          "as": "total"
+        },
+        {
+          "op": "valid",
+          "field": "added",
+          "as": "n"
+        }
+      ],
+      "groupby": [
+        "jurisdiction",
+        "jurisdiction_name",
+        "type"
+      ]
+    },
+    {
+      "calculate": "datum.n == 0 ? 'no register' : format(datum.total, ',')",
+      "as": "label"
+    },
+    {
+      "calculate": "datum.n == 0 ? 0 : datum.total",
+      "as": "bar_value"
+    }
+  ],
+  "spacing": 0,
+  "hconcat": [
+    {
+      "width": 340,
+      "height": {
+        "step": 30
+      },
+      "title": {
+        "text": "On land: historic places",
+        "color": "#8a6d3b",
+        "fontSize": 14,
+        "anchor": "end"
+      },
+      "transform": [
+        {
+          "filter": "datum.type == 'Historic places'"
+        }
+      ],
+      "encoding": {
+        "y": {
+          "field": "jurisdiction",
+          "type": "nominal",
+          "sort": [
+            "NSW",
+            "Aust. Government",
+            "QLD",
+            "NT",
+            "VIC",
+            "WA",
+            "ACT",
+            "SA",
+            "TAS"
+          ],
+          "axis": null
+        },
+        "x": {
+          "field": "bar_value",
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              0,
+              230
+            ],
+            "reverse": true
+          },
+          "axis": {
+            "title": null,
+            "tickCount": 4,
+            "grid": false
+          }
+        }
+      },
+      "layer": [
+        {
+          "mark": {
+            "type": "bar",
+            "color": "#8a6d3b",
+            "height": {
+              "band": 0.7
+            }
+          },
+          "encoding": {
+            "tooltip": [
+              {
+                "field": "jurisdiction_name",
+                "title": "Jurisdiction"
+              },
+              {
+                "field": "label",
+                "title": "Historic places added"
+              }
+            ]
+          }
+        },
+        {
+          "mark": {
+            "type": "text",
+            "align": "right",
+            "dx": -5,
+            "fontSize": 12
+          },
+          "encoding": {
+            "text": {
+              "field": "label"
+            },
+            "color": {
+              "condition": {
+                "test": "datum.n == 0",
+                "value": "#a39a90"
+              },
+              "value": "#2b2622"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "width": 120,
+      "height": {
+        "step": 30
+      },
+      "view": {
+        "stroke": null
+      },
+      "transform": [
+        {
+          "filter": "datum.type == 'Historic places'"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "fontSize": 13,
+        "fontWeight": "bold",
+        "color": "#2b2622"
+      },
+      "encoding": {
+        "y": {
+          "field": "jurisdiction",
+          "type": "nominal",
+          "sort": [
+            "NSW",
+            "Aust. Government",
+            "QLD",
+            "NT",
+            "VIC",
+            "WA",
+            "ACT",
+            "SA",
+            "TAS"
+          ],
+          "axis": null
+        },
+        "text": {
+          "field": "jurisdiction"
+        }
+      }
+    },
+    {
+      "width": 340,
+      "height": {
+        "step": 30
+      },
+      "title": {
+        "text": "Underwater: shipwrecks and other sites",
+        "color": "#3f6e8c",
+        "fontSize": 14,
+        "anchor": "start"
+      },
+      "transform": [
+        {
+          "filter": "datum.type == 'Underwater sites'"
+        }
+      ],
+      "encoding": {
+        "y": {
+          "field": "jurisdiction",
+          "type": "nominal",
+          "sort": [
+            "NSW",
+            "Aust. Government",
+            "QLD",
+            "NT",
+            "VIC",
+            "WA",
+            "ACT",
+            "SA",
+            "TAS"
+          ],
+          "axis": null
+        },
+        "x": {
+          "field": "bar_value",
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              0,
+              230
+            ]
+          },
+          "axis": {
+            "title": null,
+            "tickCount": 4,
+            "grid": false
+          }
+        }
+      },
+      "layer": [
+        {
+          "mark": {
+            "type": "bar",
+            "color": "#3f6e8c",
+            "height": {
+              "band": 0.7
+            }
+          },
+          "encoding": {
+            "tooltip": [
+              {
+                "field": "jurisdiction_name",
+                "title": "Jurisdiction"
+              },
+              {
+                "field": "label",
+                "title": "Underwater sites added"
+              }
+            ]
+          }
+        },
+        {
+          "mark": {
+            "type": "text",
+            "align": "left",
+            "dx": 5,
+            "fontSize": 12
+          },
+          "encoding": {
+            "text": {
+              "field": "label"
+            },
+            "color": {
+              "condition": {
+                "test": "datum.n == 0",
+                "value": "#a39a90"
+              },
+              "value": "#2b2622"
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "config": {
+    "view": {
+      "stroke": null
+    },
+    "font": "Source Sans 3",
+    "axis": {
+      "labelColor": "#6b625a",
+      "domainColor": "#d8cfc2",
+      "tickColor": "#d8cfc2"
+    },
+    "concat": {
+      "spacing": 0
+    }
+  }
+}

@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Australia's Heritage: Listed, But Is It Safe?</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@400;600;700&family=Source+Sans+3:wght@400;600&family=Source+Serif+4:wght@400;600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+</head>
+<body>
+
+    <div class="notice">
+        Aboriginal and Torres Strait Islander readers are advised that this page
+        discusses Indigenous cultural heritage, including sites that have been damaged or destroyed.
+    </div>
+        <header class="hero">
+            <div class="container">
+        <p class="kicker">Australian heritage</p>
+        <h1>Listed, But Is It Safe?</h1>
+        <p class="subtitle">
+            Australia protects hundreds of thousands of heritage places.
+            This page explores what is on the list, where it is, and whether being listed is enough to keep it safe.
+        </p>
+        </div>
+        <p class="hero-credit">Uluru, Uluru-Kata Tjuta National Park. Photo: Journey Beyond Rail</p>
+    </header>
+    <main class="container">
+
+        <section id="sec-what">
+            <p class="section-number">01</p>
+            <h2>What is on the list?</h2>
+            <p class="intro">
+                The National Heritage List started in 2004. It is reserved for places with
+                &ldquo;outstanding heritage value to the nation&rdquo;, and every place is listed as one of three types:
+                <span class="natural-text">natural</span> (landscapes, reefs, fossils and wildlife),
+                <span class="historic-text">historic</span> (buildings, sites and events that shaped the nation) or
+                <span class="indigenous-text">Indigenous</span> (places important to Aboriginal and Torres Strait Islander peoples).
+            </p>
+
+            <div class="number-panel">
+                <div class="number-item">
+                    <span class="big-number">232,000</span>
+                    <span class="number-label">Indigenous sites recorded</span>
+                </div>
+                <div class="number-item">
+                    <span class="big-number">15,000</span>
+                    <span class="number-label">Historic places on state registers</span>
+                </div>
+                <div class="number-item">
+                    <span class="big-number">8,800</span>
+                    <span class="number-label">Underwater sites</span>
+                </div>
+                <div class="number-item">
+                    <span class="big-number">389</span>
+                    <span class="number-label">Commonwealth places</span>
+                </div>
+                <div class="number-item">
+                    <span class="big-number">126</span>
+                    <span class="number-label">National Heritage places</span>
+                </div>
+                <div class="number-item highlight">
+                    <span class="big-number">21</span>
+                    <span class="number-label">World Heritage properties</span>
+                </div>
+            </div>
+
+            <p class="intro">Heritage in Australia works like a pyramid. At the bottom are hundreds of thousands of sites recorded by the states. Near the top are the 126 National Heritage places, which the Australian Government is responsible for, and above them the 21 World Heritage properties. This page focuses on the National Heritage List: these are meant to be the best protected places in the country, so if they are not safe, nothing below them is either.</p>
+
+            <div class="chart-card full">
+                <h3>The National Heritage family tree</h3>
+                <div id="radial_family_tree" class="chart"></div>
+                <p class="caption">The List branches into its three heritage types, then into states and territories, then into all 126 places. More than half are historic places, and only 20 are listed for their Indigenous values, even though Aboriginal and Torres Strait Islander cultures go back more than 65,000 years. Hover over a branch to highlight its heritage type, and click a place to open its official page.</p>
+                <p class="chart-source">Source: DCCEEW, National Heritage List Spatial Database</p>
+            </div>
+        </section>
+
+        <section id="sec-where">
+            <p class="section-number">02</p>
+            <h2>Where is it?</h2>
+            <p class="intro">
+                National Heritage places are not spread evenly. Most sit in the south-east,
+                while some jurisdictions have only a handful of listings. Hover for counts,
+                then click a state to compare it with the rest.
+            </p>
+
+            <div class="scrolly">
+                <div class="scrolly-graphic">
+                    <h3>Every National Heritage place in Australia</h3>
+                    <div id="map_nhl" class="chart"></div>
+                    <p class="chart-source">Source: DCCEEW, National Heritage List Spatial Database</p>
+                </div>
+
+                <div class="scrolly-steps">
+                    <div class="scrolly-step" data-step="1">
+                        <p>Each dot is a National Heritage place. This map shows 119 of the 126. The other seven are in external territories or on Macquarie Island.</p>
+                    </div>
+                    <div class="scrolly-step" data-step="2">
+                        <p>Zoom in on the south-east and the map fills up. <strong>73 places</strong>, six in every ten, sit in this corner of the country, and 56 of them are <span class="historic-text">historic</span>: convict sites, colonial buildings and places tied to early settlement around Sydney, Melbourne and Hobart.</p>
+                    </div>
+                    <div class="scrolly-step" data-step="3">
+                        <p>Now look north of the Tropic of Capricorn. Across the whole tropical north there are only <strong>14 places</strong>. Nine are <span class="natural-text">natural</span>, like Kakadu and the Great Barrier Reef, and five are <span class="indigenous-text">Indigenous</span>. Not one is historic.</p>
+                    </div>
+                    <div class="scrolly-step" data-step="4">
+                        <p>Only <strong>20 places</strong> are listed for their <span class="indigenous-text">Indigenous</span> values, spread thinly across every state, even though Aboriginal and Torres Strait Islander peoples have cared for this whole continent for more than 65,000 years.</p>
+                    </div>
+                </div>
+            </div>
+            <p class="caption scrolly-caption">Hover over a dot for details, click it to open its official page, or click a legend item to highlight one heritage type.</p>
+
+            <div class="chart-card full">
+                <h3>National Heritage places by state and territory</h3>
+                <div id="map_state" class="chart"></div>
+                <p class="caption">New South Wales and Victoria together hold 59 of 126 listings — almost half the National Heritage List. Click a state on the map or a bar to highlight it. Six places in external territories have no state polygon, so they appear only in the bars.</p>
+                <p class="chart-source">Source: DCCEEW, National Heritage List Spatial Database</p>
+            </div>
+        </section>
+
+        <section id="sec-growth">
+            <p class="section-number">03</p>
+            <h2>How has protection expanded?</h2>
+            <p class="intro">Protection grows in three ways: new places join the National Heritage List, states add places to their own registers, and new sites are recorded on land and underwater. But is it growing fast enough, and evenly?</p>
+
+            <div class="chart-row">
+                <div class="chart-card">
+                    <h3>National Heritage listings over time</h3>
+                    <div id="line_growth" class="chart"></div>
+                    <p class="caption">75 of the 126 places (60%) were listed in the first four years, including 16 World Heritage places added on a single day in 2007. Since 2008, only about three places have been added each year. Drag across the lower chart to zoom in.</p>
+                    <p class="chart-source">Source: DCCEEW, National Heritage List Spatial Database</p>
+                </div>
+                <div class="chart-card">
+                    <h3>Historic places added to state registers each year</h3>
+                    <div id="chart_state_added" class="chart"></div>
+                    <p class="caption">States added 402 historic places to their registers in five years, but the effort is uneven: Queensland added 90, while Tasmania added only 6. Circle area shows the number of places. Use the dropdown to see each financial year.</p>
+                    <p class="chart-source">Source: Australia State of the Environment 2021, heritage data</p>
+                </div>
+            </div>
+
+            <div class="chart-card full">
+                <h3>On land or underwater? Heritage added to registers, 2016&ndash;17 to 2019&ndash;20</h3>
+                <div id="butterfly_land_sea" class="chart"></div>
+                <p class="caption">Over the same four years, 428 underwater sites were added, compared with 291 historic places on land. New South Wales alone added 224 underwater sites, more than half the national total, while Western Australia added none despite its long coastline. The ACT has no coastline, and the Australian Government manages underwater sites in Commonwealth waters rather than a historic places register. No underwater data was reported for 2015&ndash;16.</p>
+                <p class="chart-source">Source: Australia State of the Environment 2021, heritage data</p>
+            </div>
+
+            <div class="chart-card full">
+                <h3>What gets recorded? Indigenous heritage sites added to Queensland&rsquo;s database, 2012&ndash;2020</h3>
+                <div id="heatmap_qld_sites" class="chart"></div>
+                <p class="caption">Queensland recorded 15,164 new Aboriginal and Torres Strait Islander heritage sites in nine years, and three in four are artefact scatters (stone tools and flakes left on the ground). Pick a region to see how recording differs across the state. Queensland only. Darker cells mean more sites recorded that year. The colour scale is compressed so that smaller numbers are still visible.</p>
+                <p class="chart-source">Source: Queensland State of the Environment 2020, cultural heritage site locations</p>
+            </div>
+        </section>
+
+        <section id="sec-safe">
+            <p class="section-number">04</p>
+            <h2>Are these places actually safe?</h2>
+            <p class="intro">A listing is a promise, not a guarantee. It only helps if there are laws that work, a plan to manage the place, and people with the power to look after it. Here is what the people closest to these places say.</p>
+
+            <div class="chart-row">
+                <div class="chart-card">
+                    <h3>Do Indigenous stakeholders think heritage is protected by law?</h3>
+                    <div id="waffle_protection" class="chart"></div>
+                    <p class="caption">Each square is one in every 100 respondents. Almost all of them said Australian laws do not adequately protect Indigenous heritage. This was a survey of Indigenous stakeholders for the 2021 State of the Environment report, not of all Indigenous Australians.</p>
+                    <p class="chart-source">Source: Australia State of the Environment 2021, Indigenous stakeholder survey</p>
+                </div>
+                <div class="chart-card">
+                    <h3>What Indigenous stakeholders see as the biggest pressures</h3>
+                    <div id="radial_indigenous" class="chart"></div>
+                    <p class="caption">Protecting cultural sites (72%) and protecting Indigenous knowledge (69%) top the list, well ahead of climate change (43%). Respondents could choose more than one option, so the totals add up to more than 100%.</p>
+                    <p class="chart-source">Source: Australia State of the Environment 2021, Indigenous stakeholder survey</p>
+                </div>
+            </div>
+
+            <div class="chart-card full">
+                <h3>Listed, but is anyone managing it? Management plans for the 120 National Heritage places, 2023</h3>
+                <div id="funnel_management" class="chart"></div>
+                <p class="caption">Only 73 of the 120 places (61%) have a management plan that their own managers rate as effective. For 35 places, there is either no plan or no answer at all. Each bar shows how many places are left at that step, and the red notes show how many drop out. Effectiveness is self-reported by place managers. The department later confirmed that 6 of the 17 places without a plan have one in place or in preparation. &ldquo;Effectiveness not rated&rdquo; is calculated from the report text (85 plans minus 77 ratings).</p>
+                <p class="chart-source">Source: DCCEEW (2023), Review of the National Heritage List and Commonwealth Heritage List, Appendix F</p>
+            </div>
+
+            <aside class="callout">
+                <h3>Case study: Juukan Gorge</h3>
+                <figure class="case-photo full-image">
+                    <img src="images/juukan.jpg" alt="Two photos side by side: on the left, a red rock shelter at Juukan Gorge with a deep overhang and green plants; on the right, the same area after the blast, covered in loose rock and rubble">
+                    <figcaption>Juukan Gorge before (left) and after (right) the May 2020 blast. Photo: PHOTOGRAPHER / AGENCY, via The Guardian (Allam &amp; Wahlquist, 2021).</figcaption>
+                </figure>
+                <p>In May 2020, mining company Rio Tinto blasted two rock shelters at Juukan Gorge in the Pilbara, Western Australia. The shelters held evidence of around 46,000 years of human occupation and were deeply important to the Puutu Kunti Kurrama and Pinikura peoples.</p>
+                <p>The blast was legal. Rio Tinto had been given consent in 2013 under Western Australia&rsquo;s Aboriginal Heritage Act 1972, and the site was not on the National Heritage List. An excavation in 2014 found the shelters were older and more significant than first thought, but the law had no way to reverse a consent once it was given. Federal law and native title rights did not stop it either.</p>
+
+                <blockquote class="pull-quote">
+                    <p>&ldquo;We are burning our libraries.&rdquo;</p>
+                    <cite>Dr Virginia Marshall, Wiradjuri Nyemba legal academic</cite>
+                </blockquote>
+
+                <p>A federal parliamentary inquiry followed. Its interim report was titled <em>Never Again</em>, and its final report, <em>A Way Forward</em> (October 2021), made 8 recommendations. Western Australia passed a new heritage law in 2021, then repealed it in 2023 and went back to the 1972 Act.</p>
+
+                <h4 class="rec-title">Inquiry recommendations, progress as of May 2025</h4>
+                <ul class="rec-list">
+                    <li><span class="rec-status not">Not done</span> Fix the two federal heritage laws</li>
+                    <li><span class="rec-status not">Not done</span> Ratify the UNESCO intangible heritage convention</li>
+                    <li><span class="rec-status part">Partly</span> New national heritage law, co-designed with First Nations peoples</li>
+                    <li><span class="rec-status part">Partly</span> Review the Native Title Act</li>
+                    <li><span class="rec-status part">Partly</span> Commit to the Dhawura Ngilan heritage vision</li>
+                    <li><span class="rec-status not">Not done</span> A truth telling process for cultural heritage</li>
+                    <li><span class="rec-status part">Partly</span> An independent fund for native title bodies</li>
+                    <li><span class="rec-status not">Not done</span> More accountability for native title bodies</li>
+                </ul>
+                <p class="caption">Status as assessed by ANTAR in May 2025. Wording shortened from the report.</p>
+
+                <div class="fact-strip">
+                    <div><span class="fact-number">46,000</span><span class="fact-label">years of occupation</span></div>
+                    <div><span class="fact-number">1972</span><span class="fact-label">state law that allowed the blast, and is still in force</span></div>
+                    <div><span class="fact-number">0 of 8</span><span class="fact-label">inquiry recommendations fully done</span></div>
+                </div>
+            </aside>
+        </section>
+
+        <section id="sec-threats">
+            <p class="section-number">05</p>
+            <h2>What is threatening them?</h2>
+            <p class="intro">For the 2021 State of the Environment report, heritage experts were asked which pressures have the greatest impact on each type of heritage. Their answers fall into five groups: climate change, industry, population, governance and other.</p>
+
+            <div class="chart-card full">
+                <h3>What do experts say is hurting heritage most?</h3>
+                <div id="marimekko_pressures" class="chart"></div>
+                <p class="caption">For natural heritage, climate change is the biggest worry (41%). But for geoheritage, Indigenous and historic heritage, the top group is governance: too little money and weak legal protection. The single most named pressure overall is inadequate resourcing. Column width shows how many mentions each heritage type received. Click any tile to see the pressures behind it.</p>
+                <p class="chart-source">Source: McConnell (2021a), heritage expert survey, Australia State of the Environment 2021</p>
+            </div>
+
+            <aside class="callout">
+                <h3>Case study: Ningaloo Coast, Western Australia</h3>
+                <figure class="case-photo">
+                    <img src="images/ningaloo.jpg" alt="Aerial view of Ningaloo Coast, with turquoise water, dark coral patches, boats and a red sandstone headland">
+                    <figcaption>Ningaloo Coast from above. Photo: Tourism Western Australia.</figcaption>
+                </figure>
+                <p>Ningaloo, on the remote coast of Western Australia, has one of the longest near-shore reefs in the world and some of the largest gatherings of whale sharks. It was World Heritage listed in 2011, and IUCN says it is generally well protected. Even so, climate change is now rated its greatest threat, and in 2025 the reef went through its worst heat stress ever recorded.</p>
+                <div id="timeline_ningaloo" class="chart"></div>
+                <p class="caption">*Projections assume global emissions keep rising (a &ldquo;business-as-usual&rdquo; scenario).</p>
+                <p class="chart-source">Source: IUCN World Heritage Outlook (2025); Heron et al. (2017, 2018)</p>
+            </aside>
+        </section>
+
+        <section id="sec-conservation">
+            <p class="section-number">06</p>
+            <h2>Can conservation keep up?</h2>
+            <p class="intro">Looking after heritage costs money: for repairs, for management plans and for research. The Australian Heritage Grants program funds projects at National Heritage places, and Round 8 (2025&ndash;26) shows where that money went.</p>
+
+            <div class="chart-card full">
+                <h3>Where the money goes: Australian Heritage Grants, Round 8 (2025&ndash;26)</h3>
+                <div id="sankey_grants" class="chart"></div>
+                <p class="caption">Round 8 funded 20 projects worth $5.2 million. Historic places received 55% and natural places 42%, but only one project ($0.12 million, about 2%) went to a place listed for its Indigenous values. Some projects at natural places, such as Willandra Lakes, are Indigenous-led, so this shows how places are listed rather than every dollar that helps Indigenous heritage. Projects are grouped by the main purpose in their description. Amounts exclude GST. Hover over a flow for details.</p>
+                <p class="chart-source">Source: DCCEEW, Australian Heritage Grants Round 8 successful projects</p>
+            </div>
+
+            <div class="chart-card full">
+                <h3>The big picture: who gets the money to manage World Heritage?</h3>
+                <div id="pareto_wh_funding" class="chart"></div>
+                <p class="caption">Between 2011&ndash;12 and 2015&ndash;16, the Australian Government spent $485 million managing World Heritage properties. Just three of them, the Great Barrier Reef, Kakadu and Uluru-Kata Tjuta, received 81%. Ningaloo Coast received $3.2 million (0.7%). Bars show each property&rsquo;s funding, largest first, and the line shows the running total. Hover for details, or pick a single financial year. Heard and McDonald Islands received no funding in this period, so it is not shown. Amounts in millions of dollars; this is older data than the rest of the page.</p>
+                <p class="chart-source">Source: Department of the Environment and Energy, World Heritage management funding 2011&ndash;12 to 2015&ndash;16</p>
+            </div>
+
+            <p class="conclusion">Australia has listed 126 places of outstanding value to the nation, and hundreds of thousands more sit on state registers. But the data tells us that a listing is only the start. Most national listings happened in the first few years. Almost every Indigenous stakeholder surveyed says the law does not protect their heritage. Almost a third of National Heritage places cannot show an effective management plan, and experts say the biggest gap is resourcing. Juukan Gorge and Ningaloo show what is at stake when protection falls short.</p>
+            <p class="conclusion closing-line">Listed is not the same as safe.</p>
+        </section>
+
+        <section id="about-data" class="about-data">
+            <h2>About the data</h2>
+            <p>National Heritage places come from the public National Heritage List spatial database, which lists 126 places. Each place is listed as one heritage type (natural, historic or Indigenous), even when it holds more than one kind of value.</p>
+            <p>Survey results come from the 2021 State of the Environment report. The Indigenous stakeholder survey reflects the people who responded, not all Aboriginal and Torres Strait Islander Australians, and respondents could choose more than one answer. The expert survey counts how often each pressure was named, not how severe it is.</p>
+            <p>Management plan effectiveness is self-reported by place managers. &ldquo;Effectiveness not rated&rdquo; is calculated from the report text (85 plans minus 77 ratings).</p>
+            <p>The Queensland heatmap covers Queensland only, and its colour scale is compressed (symlog) so smaller counts stay visible. World Heritage funding covers 2011&ndash;12 to 2015&ndash;16, older than the rest of the page. Ningaloo projections assume global emissions keep rising. Grant amounts exclude GST.</p>
+        </section>
+
+    </main>
+
+    <footer>
+        <div class="container">
+            <h2>Data sources</h2>
+            <ul class="sources">
+                <li>National Heritage List Spatial Database (NHL), public. Department of Climate Change, Energy, the Environment and Water.
+                    <a href="https://fed.dcceew.gov.au/datasets/erin::national-heritage-list-spatial-database-nhl-public/about">Link</a></li>
+                <li>SoE2020: Cultural heritage site locations. data.gov.au.
+                    <a href="https://data.gov.au/data/dataset/soe2020-cultural-heritage-site-locations/resource/d5a3ec00-b2e0-4faa-8412-3807620eaa0b">Link</a></li>
+                <li>2021 State of the Environment: Heritage. data.gov.au.
+                    <a href="https://data.gov.au/data/dataset/2021-soe-heritage-011">Link</a></li>
+                <li>McConnell A (2021a). Heritage supplementary report 4: heritage expert survey approach and results. Australia State of the Environment 2021.</li>
+                <li>McConnell A (2021d). Heritage supplementary report 2: heritage and protected area agency approach and results. Australia State of the Environment 2021.</li>
+                <li>State of the Environment 2021: Other pressures on Indigenous heritage.
+                    <a href="https://soe.dcceew.gov.au/heritage/pressures/other-pressures-indigenous-heritage">Link</a></li>
+                <li>State of the Environment 2021: Heritage key findings.
+                    <a href="https://soe.dcceew.gov.au/heritage/key-findings">Link</a></li>
+                <li>Commonwealth funding for management of World Heritage properties, 2011&ndash;12 to 2015&ndash;16. Department of the Environment and Energy.</li>
+                <li>IUCN World Heritage Outlook (2025). Ningaloo Coast: 2025 Conservation Outlook Assessment.
+                    <a href="https://worldheritageoutlook.iucn.org/">Link</a></li>
+                <li>DCCEEW (2023). Review of the National Heritage List and Commonwealth Heritage List, 1 June 2018 to 30 July 2023 (Addendum, Figure 10 and Appendix F).</li>
+                <li>Australian Heritage Grants Round 8 successful projects. DCCEEW.
+                    <a href="https://www.dcceew.gov.au/sites/default/files/documents/ahg-round-8-successful-projects.pdf">Link</a></li>
+                <li>Tourism Western Australia (n.d.). Ningaloo. Photo of Ningaloo Coast.
+                    <a href="https://www.westernaustralia.com/au/places/ningaloo/56b267a7aeeeaaf773cfa6bf">Link</a></li>
+                <li>ANTAR (2025). Rio Tinto&rsquo;s destruction of Juukan Gorge. Last edited 22 May 2025.
+                    <a href="https://antar.org.au/issues/cultural-heritage/the-destruction-of-juukan-gorge/">Link</a></li>
+                <li>Allam, L., &amp; Wahlquist, C. (2021). A year on from the Juukan Gorge destruction, Aboriginal sacred sites remain unprotected. The Guardian.
+                    <a href="https://www.theguardian.com/australia-news/2021/may/24/a-year-on-from-the-juukan-gorge-destruction-aboriginal-sacred-sites-remain-unprotected">Link</a></li>
+            </ul>
+            <p class="meta">Kan Rou Yi (34661093) FIT3179 Assignment 2</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

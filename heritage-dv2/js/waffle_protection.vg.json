@@ -1,0 +1,187 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Waffle charts: share of Indigenous stakeholders surveyed for State of the Environment 2021 who did not believe Indigenous heritage is adequately protected by law (92%), and who did not feel empowered to manage their own heritage (53%).",
+  "background": null,
+  "spacing": 36,
+  "hconcat": [
+    {
+      "width": 180,
+      "height": 180,
+      "data": {
+        "sequence": {
+          "start": 0,
+          "stop": 100,
+          "as": "i"
+        }
+      },
+      "transform": [
+        {
+          "calculate": "floor(datum.i / 10)",
+          "as": "row"
+        },
+        {
+          "calculate": "datum.i % 10",
+          "as": "col"
+        },
+        {
+          "calculate": "datum.i < 92 ? 'Yes' : 'No'",
+          "as": "filled"
+        }
+      ],
+      "title": {
+        "text": "92%",
+        "subtitle": [
+          "did not believe Indigenous heritage",
+          "is adequately protected by",
+          "Australian laws"
+        ],
+        "anchor": "start",
+        "font": "Fraunces, Georgia, serif",
+        "fontSize": 34,
+        "fontWeight": 700,
+        "color": "#b5451b",
+        "subtitleFont": "'Source Sans 3', sans-serif",
+        "subtitleFontSize": 13,
+        "subtitleColor": "#2b2622",
+        "subtitlePadding": 6,
+        "offset": 12,
+        "subtitleFontWeight": "normal",
+        "subtitleLineHeight": 17
+      },
+      "mark": {
+        "type": "square",
+        "size": 210,
+        "cornerRadius": 2,
+        "opacity": 1
+      },
+      "encoding": {
+        "x": {
+          "field": "col",
+          "type": "ordinal",
+          "axis": null
+        },
+        "y": {
+          "field": "row",
+          "type": "ordinal",
+          "axis": null,
+          "sort": "descending"
+        },
+        "color": {
+          "field": "filled",
+          "type": "nominal",
+          "scale": {
+            "domain": [
+              "Yes",
+              "No"
+            ],
+            "range": [
+              "#b5451b",
+              "#eadfd3"
+            ]
+          },
+          "legend": null
+        },
+        "tooltip": [
+          {
+            "field": "filled",
+            "title": "Counted in this share"
+          }
+        ]
+      }
+    },
+    {
+      "width": 180,
+      "height": 180,
+      "data": {
+        "sequence": {
+          "start": 0,
+          "stop": 100,
+          "as": "i"
+        }
+      },
+      "transform": [
+        {
+          "calculate": "floor(datum.i / 10)",
+          "as": "row"
+        },
+        {
+          "calculate": "datum.i % 10",
+          "as": "col"
+        },
+        {
+          "calculate": "datum.i < 53 ? 'Yes' : 'No'",
+          "as": "filled"
+        }
+      ],
+      "title": {
+        "text": "53%",
+        "subtitle": [
+          "did not feel empowered to",
+          "manage their own heritage",
+          "\u00a0"
+        ],
+        "anchor": "start",
+        "font": "Fraunces, Georgia, serif",
+        "fontSize": 34,
+        "fontWeight": 700,
+        "color": "#b5451b",
+        "subtitleFont": "'Source Sans 3', sans-serif",
+        "subtitleFontSize": 13,
+        "subtitleColor": "#2b2622",
+        "subtitlePadding": 6,
+        "offset": 12,
+        "subtitleFontWeight": "normal",
+        "subtitleLineHeight": 17
+      },
+      "mark": {
+        "type": "square",
+        "size": 210,
+        "cornerRadius": 2,
+        "opacity": 1
+      },
+      "encoding": {
+        "x": {
+          "field": "col",
+          "type": "ordinal",
+          "axis": null
+        },
+        "y": {
+          "field": "row",
+          "type": "ordinal",
+          "axis": null,
+          "sort": "descending"
+        },
+        "color": {
+          "field": "filled",
+          "type": "nominal",
+          "scale": {
+            "domain": [
+              "Yes",
+              "No"
+            ],
+            "range": [
+              "#b5451b",
+              "#eadfd3"
+            ]
+          },
+          "legend": null
+        },
+        "tooltip": [
+          {
+            "field": "filled",
+            "title": "Counted in this share"
+          }
+        ]
+      }
+    }
+  ],
+  "config": {
+    "view": {
+      "stroke": null
+    },
+    "font": "'Source Sans 3', sans-serif",
+    "concat": {
+      "spacing": 36
+    }
+  }
+}
