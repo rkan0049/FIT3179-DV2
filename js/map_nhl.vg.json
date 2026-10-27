@@ -1,19 +1,28 @@
+
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "description": "Scrollytelling point map of National Heritage places. The step parameter is set by main.js as the reader scrolls: 1 = all of Australia, 2 = zoom to the south-east, 3 = zoom to the tropical north, 4 = all of Australia with only Indigenous places highlighted.",
+  "description": "Scrollytelling point map of National Heritage places. The step parameter is set by main.js as the reader scrolls.",
   "width": "container",
   "height": 560,
   "background": null,
+  "padding": {
+    "top": 25,
+    "left": 15,
+    "right": 15,
+    "bottom": 15
+  },
+  "title": {
+    "text": "Every National Heritage place in Australia",
+    "anchor": "start",
+    "fontSize": 26,
+    "fontWeight": 600,
+    "color": "#3c3831",
+    "offset": 25
+  },
   "projection": {
     "type": "conicEqualArea",
-    "parallels": [
-      -18,
-      -36
-    ],
-    "rotate": [
-      -132,
-      0
-    ],
+    "parallels": [-18, -36],
+    "rotate": [-132, 0],
     "center": {
       "expr": "[focus_lon - 132, focus_lat]"
     },
@@ -52,12 +61,15 @@
           "as": "lon"
         }
       },
+      "transform": [
+        {
+          "calculate": "-23.436",
+          "as": "lat"
+        }
+      ],
       "mark": {
         "type": "line",
-        "strokeDash": [
-          4,
-          4
-        ],
+        "strokeDash": [4, 4],
         "color": "#5b5850",
         "strokeWidth": 1
       },
@@ -79,13 +91,7 @@
           "field": "lon",
           "type": "quantitative"
         }
-      },
-      "transform": [
-        {
-          "calculate": "-23.436",
-          "as": "lat"
-        }
-      ]
+      }
     },
     {
       "data": {
@@ -101,9 +107,7 @@
           "name": "type_select",
           "select": {
             "type": "point",
-            "fields": [
-              "class"
-            ]
+            "fields": ["class"]
           },
           "bind": "legend"
         }
@@ -141,7 +145,10 @@
           },
           "legend": {
             "orient": "top-left",
-            "symbolStrokeWidth": 0
+            "symbolStrokeWidth": 0,
+            "titleFontSize": 14,
+            "labelFontSize": 13,
+            "offset": 15
           }
         },
         "opacity": {
@@ -285,9 +292,13 @@
       "stroke": null
     },
     "font": "'Source Sans 3', sans-serif",
+    "title": {
+      "font": "'Source Sans 3', sans-serif"
+    },
     "legend": {
       "labelFontSize": 13,
-      "titleFontSize": 13
+      "titleFontSize": 14,
+      "padding": 12
     }
   },
   "params": [
