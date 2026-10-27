@@ -1008,3 +1008,36 @@ main .chart-card .caption,
 .story-intro p { font-size: 1.15rem; }
 .chapter-bridge { padding: 0 var(--card-pad-x); }
 .chapter-bridge h3, .chapter-bridge p { max-width: none; }
+
+
+
+/* FIX: Heritage map title overlapping description */
+
+/* Ensure paragraphs take up their natural space */
+#where-is-it p {
+  position: relative;
+  height: auto;
+  line-height: 1.6;
+  margin-bottom: 40px;
+}
+
+/* Give the map its own space */
+#where-is-it .vega-embed {
+  position: relative;
+  margin-top: 50px;
+  margin-bottom: 40px;
+}
+
+/* Prevent the map container from moving upward */
+#where-is-it .chart-container {
+  position: relative;
+  height: auto;
+  margin-top: 40px;
+  clear: both;
+}
+
+/* Keep SVG chart within its container */
+#where-is-it .vega-embed svg {
+  display: block;
+  max-width: 100%;
+}
